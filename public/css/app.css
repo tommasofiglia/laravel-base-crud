@@ -10949,7 +10949,7 @@ a.text-dark:focus {
 }
 
 .container {
-  max-width: 90%;
+  width: 90%;
   margin: auto;
 }
 

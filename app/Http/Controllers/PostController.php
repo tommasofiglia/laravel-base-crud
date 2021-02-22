@@ -90,8 +90,9 @@ class PostController extends Controller
      * @param  \App\blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(blogpost $blogpost)
+    public function destroy(blogpost $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }
