@@ -5,7 +5,5 @@
 @endsection
 
 @section('main')
-  <div class="container">
-    we
-  </div>
+  
 @endsection

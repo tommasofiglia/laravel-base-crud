@@ -40,7 +40,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+        $post = new blogpost;
+        $post->title = request('title');
+        $post->body = request('body');
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 
     /**
