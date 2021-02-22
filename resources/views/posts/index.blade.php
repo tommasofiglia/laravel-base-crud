@@ -30,7 +30,7 @@
           <td>{{$post->updated_at}}</td>
           <td>
             <a href="{{route('posts.show', [ 'post' => $post->id])}}" class="btn btn-primary pb-20">Leggi</a> <br>
-            <a href="#" class="btn btn-primary">Modifica</a> <br>
+            <a href="{{route('posts.edit', [ 'post' => $post->id])}}" class="btn btn-primary">Modifica</a> <br>
             <form method="post" action="{{route('posts.destroy', ['post' => $post->id])}}">
               @csrf
               @method('DELETE')

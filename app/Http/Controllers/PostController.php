@@ -16,6 +16,7 @@ class PostController extends Controller
     {
         //
         $posts = blogpost::all();
+        $posts = blogpost::latest()->get();
 
         return view('posts.index', compact('posts'));
     }
@@ -27,8 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
-        return view('posts.newpost');
+
     }
 
     /**
@@ -39,7 +39,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Request può avere una validazione
+        $request->validate([
+          'title' =>'required|unique:posts|max:255',
+          'body' =>'required',
+        ]);
+
+
+        $post = blogpost::orderBy('id', 'desc')->first();
         $post = new blogpost;
         $post->title = request('title');
         $post->body = request('body');
@@ -67,9 +74,10 @@ class PostController extends Controller
      * @param  \App\blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function edit(blogpost $blogpost)
+    public function edit(blogpost $post)
     {
-        //
+
+      return view('posts.edit',compact('post'));
     }
 
     /**
@@ -79,9 +87,12 @@ class PostController extends Controller
      * @param  \App\blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, blogpost $blogpost)
+    public function update(Request $request, blogpost $post)
     {
-        //
+        $posts = $request->all();
+        $post->update($posts);
+
+        return redirect()->route('posts.index', $post);
     }
 
     /**
