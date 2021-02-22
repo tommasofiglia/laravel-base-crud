@@ -54,9 +54,11 @@ class PostController extends Controller
      * @param  \App\blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function show(blogpost $blogpost)
+    public function show(blogpost $post)
     {
         //
+
+        return view('posts.showpost', compact('post'));
     }
 
     /**

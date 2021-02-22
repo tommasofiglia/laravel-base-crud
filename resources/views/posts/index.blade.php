@@ -29,7 +29,7 @@
           <td>{{$post->created_at}}</td>
           <td>{{$post->updated_at}}</td>
           <td>
-            <a href="#" class="btn btn-primary pb-20">Leggi</a> <br>
+            <a href="{{route('posts.show', [ 'post' => $post->id])}}" class="btn btn-primary pb-20">Leggi</a> <br>
             <a href="#" class="btn btn-primary">Modifica</a> <br>
             <form class="" method="post">
               <a href="#" class="btn btn-danger">Elimina</a>
